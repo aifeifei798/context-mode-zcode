@@ -1,0 +1,22 @@
+[Unit]
+Description=context-mode MCP (stdio → Streamable HTTP bridge for ZCode)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__WORKDIR__
+Environment=PATH=__NODE_BIN_DIR__:/usr/local/bin:/usr/bin:/bin
+# 知识库存放根（固定，跨项目共享；想分项目就改 CONTEXT_MODE_PROJECT_DIR）
+Environment=CONTEXT_MODE_DIR=__STORE__
+Environment=CONTEXT_MODE_PROJECT_DIR=__WORKDIR__
+Environment=NO_COLOR=1
+
+ExecStart=__SUPERGATEWAY__ --stdio "__NODE__ __CLI__" --outputTransport streamableHttp --host 127.0.0.1 --port __PORT__ --streamableHttpPath /mcp --healthEndpoint /healthz --logLevel info
+
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+KillMode=mixed
+
+[Install]
+WantedBy=default.target

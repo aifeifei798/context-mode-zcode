@@ -1,0 +1,17 @@
+{
+  "name": "local-context-mode",
+  "description": "本地市场：把 context-mode 以 Claude 插件结构接进 ZCode（实验性）",
+  "plugins": [
+    {
+      "name": "context-mode",
+      "source": {
+        "source": "directory",
+        "path": "/home/feifei/develop/app/opencode/context-mode-opencode-v2/node_modules/context-mode"
+      },
+      "description": "context-mode 1.0.169：MCP + hooks + skills 的完整接入（hooks 协议与 ZCode 兼容性未验证）",
+      "version": "1.0.169",
+      "category": "developer-tools",
+      "tags": ["context", "mcp", "tokens"]
+    }
+  ]
+}
